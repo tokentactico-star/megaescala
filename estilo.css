@@ -1,0 +1,14 @@
+:root { --fondo: #0a0e17; --texto: #e8ecf4; --tenue: #8d97ab; --acento: #f5a623; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--texto);
+       font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+.antetitulo { color: var(--acento); letter-spacing: .18em; font-size: 13px; font-weight: 700; margin: 0 0 8px; }
+.antetitulo a { color: inherit; text-decoration: none; }
+h1 { font-size: clamp(36px, 8vw, 56px); line-height: 1.1; margin: 0 0 20px; }
+h2 { font-size: 20px; margin: 40px 0 8px; color: var(--acento); }
+.lema { font-size: 20px; color: var(--texto); }
+.fecha { color: var(--tenue); font-size: 14px; }
+a { color: var(--acento); }
+nav { margin-top: 56px; display: flex; gap: 24px; flex-wrap: wrap; }
+ul { padding-left: 20px; }
