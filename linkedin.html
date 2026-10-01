@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Megaescala — conexión con LinkedIn</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main>
+  <p class="antetitulo"><a href="index.html">MEGAESCALA</a></p>
+  <h1>Conexión con LinkedIn</h1>
+  <p id="msg">Leyendo la respuesta de LinkedIn…</p>
+  <textarea id="codigo" readonly rows="5" style="width:100%;font-size:14px" hidden></textarea>
+  <p><button id="copiar" hidden>Copiar el código</button></p>
+  <p class="lema" id="pasos" hidden>Copia el código y pégalo en el chat del bot de Telegram (te lo está pidiendo; si
+  no, escribe /codigo_li). Caduca en unos minutos.</p>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  const msg = document.getElementById("msg");
+  if (q.get("code")) {
+    const t = document.getElementById("codigo");
+    t.value = q.get("code"); t.hidden = false;
+    document.getElementById("copiar").hidden = false; document.getElementById("pasos").hidden = false;
+    msg.textContent = "Permiso concedido. Este es tu código:";
+    document.getElementById("copiar").onclick = () => { t.select(); navigator.clipboard.writeText(t.value);
+      document.getElementById("copiar").textContent = "Copiado ✓"; };
+  } else if (q.get("error")) {
+    msg.textContent = "LinkedIn no dio el permiso: " + (q.get("error_description") || q.get("error"));
+  } else { msg.textContent = "Esta página solo sirve para recibir el permiso de LinkedIn."; }
+</script>
+</body>
+</html>
